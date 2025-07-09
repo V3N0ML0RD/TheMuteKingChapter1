@@ -1,0 +1,18 @@
+local BadgeService = game:GetService("BadgeService")
+local Config = require(script.Parent.Config)
+
+game.Players.PlayerAdded:Connect(function(player)
+    player.CharacterAdded:Connect(function(character)
+        character:WaitForChild("Humanoid").Died:Connect(function()
+            pcall(function()
+                BadgeService:AwardBadge(player.UserId, Config.BadgeIDs.FirstDeath)
+            end)
+        end)
+    end)
+end)
+
+game.ReplicatedStorage.RemoteEvents.MonsterEvent.OnServerEvent:Connect(function(player)
+    pcall(function()
+        BadgeService:AwardBadge(player.UserId, Config.BadgeIDs.Escape)
+    end)
+end)
