@@ -1,0 +1,2 @@
+-- This is a placeholder file to define the remote event path in GitHub
+-- In Roblox Studio, create a RemoteEvent object and name it "MonsterEvent"
